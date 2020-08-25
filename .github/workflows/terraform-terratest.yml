@@ -49,7 +49,7 @@ on:
   pull_request:
 
 jobs: 
-  Terraform-Terratest:
+  Terraform:
     name: 'Terraform-Terratest'
     runs-on: ubuntu-latest
 
@@ -71,13 +71,15 @@ jobs:
 
     - name: Test with terratest
       run: |
+        brew install go
         cd test
-        go get -v github.com/gruntwork-io/terratest
         go get -v golang.org/x/crypto/ssh
+        go get -v github.com/gruntwork-io/terratest
         go test 
         
     - name: Switch dir
       run: |
+        cd ..
         cd terraform/nginx
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
