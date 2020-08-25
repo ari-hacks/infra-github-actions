@@ -77,8 +77,6 @@ jobs:
     - name: Test with terratest
       run: |
         cd test
-        go get -v golang.org/x/crypto/ssh
-        go get -v github.com/gruntwork-io/terratest
         go test 
         
     - name: Switch dir
