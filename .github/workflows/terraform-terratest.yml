@@ -68,10 +68,14 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.15.x
 
     - name: Test with terratest
       run: |
-        brew install go
         cd test
         go get -v golang.org/x/crypto/ssh
         go get -v github.com/gruntwork-io/terratest
