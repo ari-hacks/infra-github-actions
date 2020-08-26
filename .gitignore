@@ -1,0 +1,17 @@
+Configuration.md
+__pycache__/
+# Local .terraform directories
+**/.terraform/*
+# .tfstate files
+*/terraform.tfstate
+*.tfstate
+**.tfstate
+*.tfstate.*
+# Crash log files
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.vscode/
+/terraform/nginx/terraform.tfstate
