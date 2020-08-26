@@ -69,21 +69,23 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.15.x
+#     - name: Install Go
+#       uses: actions/setup-go@v2
+#       with:
+#         go-version: 1.15.x
 
-    - name: Test with terratest
-      run: |
-        cd test
-        go get -v golang.org/x/crypto/ssh
-        go get -v github.com/gruntwork-io/terratest
-        sudo go test -v
+#     - name: Test with terratest
+#       run: |
+#         cd test
+#         go get -v golang.org/x/crypto/ssh
+#         go get -v github.com/gruntwork-io/terratest
+#         go test
            
-    - name: Switch dir
-      run: |
-       cd terraform/nginx
+#     - name: Switch dir
+#       run: |
+#        cd ..
+#        cd ..
+#        cd terraform/nginx
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
