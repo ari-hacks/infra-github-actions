@@ -46,6 +46,8 @@ name: 'Terraform-Terratest'
 
 on:
   push:
+    branches:
+    - master
   pull_request:
 
 jobs: 
@@ -80,24 +82,29 @@ jobs:
 #         go get -v golang.org/x/crypto/ssh
 #         go get -v github.com/gruntwork-io/terratest
 #         go test
-           
-    - name: Switch dir
-      run: |
-       cd terraform/nginx
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: |
+       cd terraform/nginx
+       terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform fmt -check
+      run: |
+       cd terraform/nginx
+       terraform fmt -check
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan
+      run: |
+       cd terraform/nginx
+       terraform plan
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: terraform apply -auto-approve
+      run: |
+       cd terraform/nginx
+       terraform apply -auto-approve
