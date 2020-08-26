@@ -21,5 +21,5 @@ func TestTerraform(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
 	output := terraform.Output(t, terraformOptions, "external_port")
-	assert.Equal(t, "8000", output)
+	assert.Equal(t, "8000%0A", output)
 }
