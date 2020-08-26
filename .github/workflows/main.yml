@@ -42,7 +42,7 @@ jobs:
         fi
 
     - name: Run terratest
-      working-directory: /home/runner/work/infra-github-actions/test/nginx
+      working-directory: test/nginx
       run: go test -v
 
     # # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
