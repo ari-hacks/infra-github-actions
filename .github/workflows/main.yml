@@ -44,7 +44,7 @@ jobs:
     - name: Run terratest
       run: |
         cd test/nginx
-        sudo go test -v
+        go test -v
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
