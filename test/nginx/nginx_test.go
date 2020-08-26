@@ -8,6 +8,9 @@ import (
 )
 
 func TestTerraform(t *testing.T) {
+
+	exPort := "8000"
+
 	terraformOptions := &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
 		TerraformDir: "../../terraform/nginx",
@@ -21,5 +24,5 @@ func TestTerraform(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
 	output := terraform.Output(t, terraformOptions, "external_port")
-	assert.Equal(t, "8000%0A", output)
+	assert.Equal(t, exPort, output)
 }
