@@ -9,7 +9,7 @@ import (
 
 func TestTerraform(t *testing.T) {
 
-	exPort := 8000
+	exPort := "8000"
 
 	terraformOptions := &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
