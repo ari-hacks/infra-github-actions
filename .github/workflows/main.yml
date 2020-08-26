@@ -30,7 +30,7 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.15.x
+        go-version: 1.14.x
 
     - name: Get dependencies
       run: |
@@ -44,7 +44,7 @@ jobs:
     - name: Run terratest
       run: |
         cd test/nginx
-        go test -v
+        go test
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
