@@ -43,7 +43,7 @@ jobs:
 
     - name: Run terratest
       run: |
-        cd test
+        cd test/nginx
         go test
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
