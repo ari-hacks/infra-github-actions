@@ -1,6 +1,7 @@
 package test
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -10,7 +11,7 @@ import (
 func TestTerraform(t *testing.T) {
 
 	// exPort := "8000"
-	protocol := "tcp"
+	protocol := strings.Trim("tcp", "\"")
 
 	terraformOptions := &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
