@@ -9,7 +9,8 @@ import (
 
 func TestTerraform(t *testing.T) {
 
-	exPort := "8000"
+	// exPort := "8000"
+	protocol := "tcp"
 
 	terraformOptions := &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
@@ -23,6 +24,6 @@ func TestTerraform(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
-	output := terraform.Output(t, terraformOptions, "external_port")
-	assert.Equal(t, exPort, output)
+	output := terraform.Output(t, terraformOptions, "port_protocol")
+	assert.Equal(t, protocol, output)
 }
