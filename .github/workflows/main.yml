@@ -34,17 +34,17 @@ jobs:
     - uses: autero1/action-terraform@v0.1.0
       with:
           terraform_version: 0.12.21
-    - name: Download Go Modules
-      working-directory: test/nginx
-      run: go mod download
-    # - name: Get dependencies
-    #   run: |
-    #     if [ -f Gopkg.toml ]; then
-    #         curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-    #         dep ensure
-    #     else
-    #       go get -v -t -d ./...  
-    #     fi
+    # - name: Download Go Modules
+    #   working-directory: test/nginx
+    #   run: go mod download
+    - name: Get dependencies
+      run: |
+        if [ -f Gopkg.toml ]; then
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            dep ensure
+        else
+          go get -v -t -d ./...  
+        fi
 
     - name: Run terratest
       working-directory: test/nginx
