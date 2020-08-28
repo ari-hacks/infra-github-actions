@@ -31,12 +31,10 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.14.6
-    - uses: autero1/action-terraform@v0.1.0
-      with:
-          terraform_version: 0.12.21
-    # - name: Download Go Modules
-    #   working-directory: test/nginx
-    #   run: go mod download
+    # - uses: autero1/action-terraform@v0.1.0
+    #   with:
+    #       terraform_version: 0.12.21
+
     - name: Get dependencies
       run: |
         if [ -f Gopkg.toml ]; then
