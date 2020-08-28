@@ -26,5 +26,5 @@ func TestTerraform(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
 	output := terraform.Output(t, terraformOptions, "test")
-	assert.Equal(t, test, output)
+	assert.Contains(t, test, output)
 }
