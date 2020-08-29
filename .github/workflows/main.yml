@@ -21,28 +21,28 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
         
-#     - name: Terraform for testing
-#       uses: autero1/action-terraform@v0.1.0
-#       with:
-#           terraform_version: 0.12.21
+    - name: Terraform for testing
+      uses: autero1/action-terraform@v0.1.0
+      with:
+          terraform_version: 0.12.21
 
-#     - name: Install Go
-#       uses: actions/setup-go@v2
-#       with:
-#         go-version: 1.14.6
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.14.6
 
-#     - name: Get dependencies
-#       run: |
-#         if [ -f Gopkg.toml ]; then
-#             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-#             dep ensure
-#         else
-#           go get -v -t -d ./...  
-#         fi
+    - name: Get dependencies
+      run: |
+        if [ -f Gopkg.toml ]; then
+            curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+            dep ensure
+        else
+          go get -v -t -d ./...  
+        fi
 
-#     - name: Run terratest
-#       working-directory: test/nginx
-#       run: go test
+    - name: Run terratest
+      working-directory: test/nginx
+      run: go test
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
