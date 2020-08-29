@@ -1,7 +1,6 @@
 package test
 
 import (
-	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -10,8 +9,8 @@ import (
 
 func TestTerraform(t *testing.T) {
 
-	// exPort := "8000"
-	protocol := strings.Trim("tcp", "\"")
+	exPort := "8000"
+	// protocol := strings.Trim("tcp", "\"")
 
 	terraformOptions := &terraform.Options{
 		// Set the path to the Terraform code that will be tested.
@@ -25,6 +24,6 @@ func TestTerraform(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables and check they have the expected values.
-	output := terraform.Output(t, terraformOptions, "port_protocol")
-	assert.Contains(t, protocol, output)
+	output := terraform.Output(t, terraformOptions, "external_port")
+	assert.Contains(t, exPort, output)
 }

@@ -25,8 +25,9 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+        # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         terraform_version: 0.12.21
+
     - name: Install Go
       uses: actions/setup-go@v2
       with:
@@ -46,30 +47,30 @@ jobs:
 
     - name: Run terratest
       working-directory: test/nginx
-      run: go test -v
+      run: go test
 
-    # # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    # - name: Terraform Init
-    #   run: |
-    #    cd terraform/nginx
-    #    terraform init
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: |
+       cd terraform/nginx
+       terraform init
 
-    # # Checks that all Terraform configuration files adhere to a canonical format
-    # - name: Terraform Format
-    #   run: |
-    #    cd terraform/nginx
-    #    terraform fmt -check
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: |
+       cd terraform/nginx
+       terraform fmt -check
 
-    # # Generates an execution plan for Terraform
-    # - name: Terraform Plan
-    #   run: |
-    #    cd terraform/nginx
-    #    terraform plan
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: |
+       cd terraform/nginx
+       terraform plan
 
-    #   # On push to master, build or change infrastructure according to Terraform configuration files
-    #   # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-    # - name: Terraform Apply
-    #   if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-    #   run: |
-    #    cd terraform/nginx
-    #    terraform apply -auto-approve
+      # On push to master, build or change infrastructure according to Terraform configuration files
+      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      run: |
+       cd terraform/nginx
+       terraform apply -auto-approve
