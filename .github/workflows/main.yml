@@ -76,4 +76,3 @@ jobs:
        cd terraform/nginx
        terraform apply -auto-approve
        curl http://localhost:8000
-       echo "{{github.event_name}}"
