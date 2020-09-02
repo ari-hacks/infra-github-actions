@@ -73,7 +73,7 @@ jobs:
        terraform plan
 
     - name: Terraform Apply
-      if: github.event_name == 'push' && contains( env.commitmsg , 'terraform/ )
+      if: github.event_name == 'push' && contains( env.commitmsg , 'terraform/')
       run: |
        cd ${{ env.commitmsg }}
        terraform apply -auto-approve
