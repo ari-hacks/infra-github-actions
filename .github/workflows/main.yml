@@ -19,7 +19,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
         
-    - name: Terraform for testing
+    - name: Terraform version installer
       uses: autero1/action-terraform@v0.1.0
       with:
           terraform_version: 0.12.21
@@ -80,11 +80,6 @@ jobs:
        curl http://localhost:8000
 
   
-    - name: Terraform Destroy
-      if: github.event_name == 'push' && contains( env.commitmsg , 'destroy' )
-      run: |
-       cd ${{ env.commitmsg }}
-       terraform destroy -auto-approve
 
 
   

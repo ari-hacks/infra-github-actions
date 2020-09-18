@@ -10,7 +10,6 @@ import (
 func TestTerraform(t *testing.T) {
 
 	exPort := "8000"
-	// protocol := strings.Trim("tcp", "\"")
 
 	terraformOptions := &terraform.Options{
 		TerraformDir: "../../../terraform/nginx",
