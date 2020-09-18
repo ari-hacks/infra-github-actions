@@ -22,7 +22,7 @@ jobs:
     - name: Terraform version installer
       uses: autero1/action-terraform@v0.1.0
       with:
-          terraform_version: 0.12.21
+          terraform_version: 0.13.3
 
     - name: get commit message
       run: |
